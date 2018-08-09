@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware([\Barryvdh\Cors\HandleCors::class])->get('/cat', 'Api\ApiController@category');
-Route::get('/list/{cat_id}', 'Api\ApiController@index');
-Route::get('/detail/{demo_id}', 'Api\ApiController@detail');
+Route::middleware([\Barryvdh\Cors\HandleCors::class])->get('/list/{cat_id}', 'Api\ApiController@index');
+Route::middleware([\Barryvdh\Cors\HandleCors::class])->get('/detail/{demo_id}', 'Api\ApiController@detail');
