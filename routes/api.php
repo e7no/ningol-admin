@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/cat', 'Api\ApiController@category');
+Route::get('/list/{cat_id}', 'Api\ApiController@index');
+Route::get('/detail/{demo_id}', 'Api\ApiController@detail');
