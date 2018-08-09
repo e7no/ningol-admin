@@ -24,9 +24,7 @@ class DemoListController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('案例列表');
             $content->body($this->grid());
         });
     }
@@ -40,10 +38,7 @@ class DemoListController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('案例列表 【编辑】');
             $content->body($this->form()->edit($id));
         });
     }
@@ -57,9 +52,7 @@ class DemoListController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('案例列表 【添加】');
             $content->body($this->form());
         });
     }
@@ -72,11 +65,14 @@ class DemoListController extends Controller
     protected function grid()
     {
         return Admin::grid(DemoList::class, function (Grid $grid) {
-
             $grid->id('ID')->sortable();
-
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->name('案例名');
+            $grid->cat_id('分类ID')->sortable();
+            $grid->l_url('大图');
+            $grid->m_url('略缩图');
+            $grid->abstract('简介');
+            $grid->remark('备注');
+            $grid->created_at('创建时间')->sortable();
         });
     }
 
@@ -88,11 +84,13 @@ class DemoListController extends Controller
     protected function form()
     {
         return Admin::form(DemoList::class, function (Form $form) {
-
             $form->display('id', 'ID');
+            $form->text('name', '案例名');
+            $form->text('d_list.cat_id');
+            $form->number('p_order', '排序');
+            $form->datetime('created_at');
+            $form->datetime('updated_at');
 
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
         });
     }
 }

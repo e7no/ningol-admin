@@ -10,4 +10,10 @@ class DemoList extends Model
     use SoftDeletes;
 
     protected $table = 'demo_list';
+
+    public function demolist()
+    {
+        return $this->hasOne(DemoCat::class);
+    }
+
 }
