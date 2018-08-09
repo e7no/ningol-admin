@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Models\DemoCat;
 use App\Admin\Models\DemoList;
 
 use Encore\Admin\Form;
@@ -84,13 +85,19 @@ class DemoListController extends Controller
     protected function form()
     {
         return Admin::form(DemoList::class, function (Form $form) {
+            $cat=DemoCat::where('parent_id', 0)->get(['cat_id','cat_name']);
+            foreach ($cat as $val){
+                $option[$val['cat_id']]=$val['cat_name'];
+            }
             $form->display('id', 'ID');
             $form->text('name', '案例名');
-            $form->text('d_list.cat_id');
-            $form->number('p_order', '排序');
+            $form->select('cat_id','分类')->options($option);
+            $form->text('l_url', '大图url');
+            $form->text('m_url', '略缩图url');
+            $form->text('abstract', '简介');
+            $form->text('remark', '备注');
             $form->datetime('created_at');
             $form->datetime('updated_at');
-
         });
     }
 }

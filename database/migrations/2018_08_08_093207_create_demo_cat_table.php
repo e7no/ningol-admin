@@ -15,8 +15,8 @@ class CreateDemoCatTable extends Migration
     {
         Schema::create('demo_cat', function (Blueprint $table) {
             $table->increments('cat_id');
-            $table->string('cat_name')->comment('分类名')->nullable();
-            $table->string('cat_path')->comment('分类路径');
+            $table->string('cat_name')->comment('分类名');
+            $table->string('cat_path')->comment('分类路径')->nullable();
             $table->tinyInteger('parent_id')->comment('父类ID');
             $table->integer('p_order')->comment('排序');
             $table->timestamps();

@@ -13,4 +13,6 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('/demo/category', 'DemoCatController');
     $router->resource('/demo/list', 'DemoListController');
+    $router->resource('/demo/detail', 'DemoDetailController');
+
 });

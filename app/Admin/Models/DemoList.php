@@ -11,9 +11,4 @@ class DemoList extends Model
 
     protected $table = 'demo_list';
 
-    public function demolist()
-    {
-        return $this->hasOne(DemoCat::class);
-    }
-
 }
